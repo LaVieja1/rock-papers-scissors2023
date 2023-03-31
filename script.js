@@ -4,8 +4,8 @@ let scoreComputer = 0;
 let round = 0;
 
 const playerPoints = document.getElementById('player-score');
-console.log(playerPoints);
 const computerPoints = document.getElementById('computer-score');
+const roundWinner = document.getElementById('ganador-ronda')
 
 /// FUNCION QUE ELIGE ALEATORIAMENTE ENTRE PIEDRA PAPEL O TIJERA
 
@@ -34,8 +34,8 @@ function playRound(playerSelection, computerSelection) {
 
     if (playerChoice == computerSelection) {
         round++;
-        console.log("Empate! Son iguales");
-        return "Empate! Son iguales";
+        roundWinner.textContent = "Empate! Son iguales";
+        return;
     }
 
     if (playerChoice == "piedra") {
@@ -43,42 +43,42 @@ function playRound(playerSelection, computerSelection) {
             scoreComputer++;
             round++;
             computerPoints.textContent = `${scoreComputer}`;
-            console.log("Perdiste! El papel le gana a la piedra");
-            return "Perdiste! El papel le gana a la piedra";
+            roundWinner.textContent = "Perdiste! El papel le gana a la piedra";
+            return;
         } else if (computerSelection == "tijera") {
             scorePlayer++;
             round++;
             playerPoints.textContent = `${scorePlayer}`;
-            console.log("Ganaste! La piedra le gana a la tijera");
-            return "Ganaste! La piedra le gana a la tijera";
+            roundWinner.textContent = "Ganaste! La piedra le gana a la tijera";
+            return;
         }
     } else if (playerChoice == "papel") {
         if (computerSelection == "piedra") {
             scorePlayer++;
             round++;
             playerPoints.textContent = `${scorePlayer}`;
-            console.log("Ganaste! El papel le gana a la piedra");
-            return "Ganaste! El papel le gana a la piedra";
+            roundWinner.textContent = "Ganaste! El papel le gana a la piedra";
+            return;
         } else if (computerSelection == "tijera") {
             scoreComputer++;
             round++;
             computerPoints.textContent = `${scoreComputer}`;
-            console.log("Perdiste! La tijera le gana al papel");
-            return "Perdiste! La tijera le gana al papel";
+            roundWinner.textContent = "Perdiste! La tijera le gana al papel";
+            return;
         }
     } else if (playerChoice == "tijera") {
         if (computerSelection == "piedra") {
             scoreComputer++;
             round++;
             computerPoints.textContent = `${scoreComputer}`;
-            console.log("Perdiste! La piedra le gana a la tijera");
-            return "Perdiste! La piedra le gana a la tijera";
+            roundWinner.textContent = "Perdiste! La piedra le gana a la tijera";
+            return;
         } else if (computerSelection == "papel") {
             scorePlayer++;
             playerPoints.textContent = `${scorePlayer}`;
             round++;
-            console.log("Ganaste! La tijera le gana al papel");
-            return "Ganaste! La tijera le gana al papel";
+            roundWinner.textContent = "Ganaste! La tijera le gana al papel";
+            return;
         }
     } else {
         return "Elegir papel,piedra o tijera";
@@ -106,10 +106,25 @@ function game() {
     btnPiedra.addEventListener('click', () => {
         playerButton = 'piedra';
         computerChoice = getComputerChoice();
-        console.log(playerButton);
 
         playRound(playerButton, computerChoice);
-    })
+    });
+
+    const btnPapel = document.getElementById('papel');
+    btnPapel.addEventListener('click', () => {
+        playerButton = 'papel';
+        computerChoice = getComputerChoice();
+
+        playRound(playerButton, computerChoice);
+    });
+
+    const btnTijera = document.getElementById('tijera');
+    btnTijera.addEventListener('click', () => {
+        playerButton = 'tijera';
+        computerChoice = getComputerChoice();
+
+        playRound(playerButton, computerChoice);
+    });
 
 /*
     for (let i = 0; i < 5; i++) {
