@@ -1,13 +1,16 @@
 let scorePlayer = 0;
 let scoreComputer = 0;
 
-let round = 0;
-
 const playerPoints = document.getElementById('player-score');
 const computerPoints = document.getElementById('computer-score');
 const roundWinner = document.getElementById('ganador-ronda')
 const botones = document.getElementById('botones');
 const ganador = document.getElementById('ganador');
+const jugar = document.getElementById('game');
+const gameContainer = document.getElementById('container');
+
+gameContainer.style.display = 'none';
+
 
 /// FUNCION QUE ELIGE ALEATORIAMENTE ENTRE PIEDRA PAPEL O TIJERA
 
@@ -35,7 +38,6 @@ function playRound(playerSelection, computerSelection) {
     let playerChoice = playerSelection.toLowerCase();
 
     if (playerChoice == computerSelection) {
-        round++;
         roundWinner.textContent = "Empate! Son iguales";
         return;
     }
@@ -43,13 +45,11 @@ function playRound(playerSelection, computerSelection) {
     if (playerChoice == "piedra") {
         if (computerSelection == "papel") {
             scoreComputer++;
-            round++;
             computerPoints.textContent = `${scoreComputer}`;
             roundWinner.textContent = "Perdiste! El papel le gana a la piedra";
             return;
         } else if (computerSelection == "tijera") {
             scorePlayer++;
-            round++;
             playerPoints.textContent = `${scorePlayer}`;
             roundWinner.textContent = "Ganaste! La piedra le gana a la tijera";
             return;
@@ -57,13 +57,11 @@ function playRound(playerSelection, computerSelection) {
     } else if (playerChoice == "papel") {
         if (computerSelection == "piedra") {
             scorePlayer++;
-            round++;
             playerPoints.textContent = `${scorePlayer}`;
             roundWinner.textContent = "Ganaste! El papel le gana a la piedra";
             return;
         } else if (computerSelection == "tijera") {
             scoreComputer++;
-            round++;
             computerPoints.textContent = `${scoreComputer}`;
             roundWinner.textContent = "Perdiste! La tijera le gana al papel";
             return;
@@ -71,14 +69,12 @@ function playRound(playerSelection, computerSelection) {
     } else if (playerChoice == "tijera") {
         if (computerSelection == "piedra") {
             scoreComputer++;
-            round++;
             computerPoints.textContent = `${scoreComputer}`;
             roundWinner.textContent = "Perdiste! La piedra le gana a la tijera";
             return;
         } else if (computerSelection == "papel") {
             scorePlayer++;
             playerPoints.textContent = `${scorePlayer}`;
-            round++;
             roundWinner.textContent = "Ganaste! La tijera le gana al papel";
             return;
         }
@@ -97,9 +93,14 @@ console.log(playRound(playerSelection, computerSelection));
 // INICIA UN JUEGO DE 5 RONDAS, SE INFORMA LA RONDA Y EL PUNTUAJE
 // DEL JUGADOR Y LA COMPUTADORA, AL FINAL SE INDICA QUIEN GANO.
 
-
+jugar.addEventListener('click', game);
 
 function game() {
+
+    gameContainer.style.display = 'flex';
+    botones.style.display = "flex";
+    ganador.textContent = '';
+    roundWinner.textContent = '';
 
     let playerButton = '';
     let computerChoice = '';
@@ -114,6 +115,10 @@ function game() {
         if (scorePlayer == 5 || scoreComputer == 5) {
             ganador.textContent = scorePlayer == 5 ? "GANASTE PIEDRA, PAPEL O TIJERA" : "PERDISTE PIEDRA, PAPEL O TIJERA";
             botones.style.display = "none";
+            jugar.textContent = 'Volver a jugar';
+            jugar.addEventListener('click', () => {
+                window.location.reload();
+            })
         }
 
     });
@@ -128,6 +133,10 @@ function game() {
         if (scorePlayer == 5 || scoreComputer == 5) {
             ganador.textContent = scorePlayer == 5 ? "GANASTE PIEDRA, PAPEL O TIJERA" : "PERDISTE PIEDRA, PAPEL O TIJERA";
             botones.style.display = "none";
+            jugar.textContent = 'Volver a jugar';
+            jugar.addEventListener('click', () => {
+                window.location.reload();
+            })
         }
     });
 
@@ -141,8 +150,12 @@ function game() {
         if (scorePlayer == 5 || scoreComputer == 5) {
             ganador.textContent = scorePlayer == 5 ? "GANASTE PIEDRA, PAPEL O TIJERA" : "PERDISTE PIEDRA, PAPEL O TIJERA";
             botones.style.display = "none";
+            jugar.textContent = 'Volver a jugar';
+            jugar.addEventListener('click', () => {
+                window.location.reload();
+            })
         }
-        
+
     });
 
 /*
@@ -159,4 +172,4 @@ function game() {
 
 //INICIA EL JUEGO
 
-game();
+//game();
