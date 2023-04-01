@@ -44,3 +44,9 @@ button {
 p {
     font-weight: bold;
 }
+
+img {
+    background: transparent;
+    height: 30vh;
+    width: auto;
+}
