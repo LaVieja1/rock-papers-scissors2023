@@ -97,6 +97,7 @@ jugar.addEventListener('click', game);
 
 function game() {
 
+    jugar.style.display = 'none';
     gameContainer.style.display = 'flex';
     botones.style.display = "flex";
     ganador.textContent = '';
@@ -115,6 +116,7 @@ function game() {
         if (scorePlayer == 5 || scoreComputer == 5) {
             ganador.textContent = scorePlayer == 5 ? "GANASTE PIEDRA, PAPEL O TIJERA" : "PERDISTE PIEDRA, PAPEL O TIJERA";
             botones.style.display = "none";
+            jugar.style.display = 'flex';
             jugar.textContent = 'Volver a jugar';
             jugar.addEventListener('click', () => {
                 window.location.reload();
@@ -133,6 +135,7 @@ function game() {
         if (scorePlayer == 5 || scoreComputer == 5) {
             ganador.textContent = scorePlayer == 5 ? "GANASTE PIEDRA, PAPEL O TIJERA" : "PERDISTE PIEDRA, PAPEL O TIJERA";
             botones.style.display = "none";
+            jugar.style.display = 'flex';
             jugar.textContent = 'Volver a jugar';
             jugar.addEventListener('click', () => {
                 window.location.reload();
@@ -150,6 +153,7 @@ function game() {
         if (scorePlayer == 5 || scoreComputer == 5) {
             ganador.textContent = scorePlayer == 5 ? "GANASTE PIEDRA, PAPEL O TIJERA" : "PERDISTE PIEDRA, PAPEL O TIJERA";
             botones.style.display = "none";
+            jugar.style.display = 'flex';
             jugar.textContent = 'Volver a jugar';
             jugar.addEventListener('click', () => {
                 window.location.reload();
