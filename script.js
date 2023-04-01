@@ -6,6 +6,8 @@ let round = 0;
 const playerPoints = document.getElementById('player-score');
 const computerPoints = document.getElementById('computer-score');
 const roundWinner = document.getElementById('ganador-ronda')
+const botones = document.getElementById('botones');
+const ganador = document.getElementById('ganador');
 
 /// FUNCION QUE ELIGE ALEATORIAMENTE ENTRE PIEDRA PAPEL O TIJERA
 
@@ -108,6 +110,12 @@ function game() {
         computerChoice = getComputerChoice();
 
         playRound(playerButton, computerChoice);
+
+        if (scorePlayer == 5 || scoreComputer == 5) {
+            ganador.textContent = scorePlayer == 5 ? "GANASTE PIEDRA, PAPEL O TIJERA" : "PERDISTE PIEDRA, PAPEL O TIJERA";
+            botones.style.display = "none";
+        }
+
     });
 
     const btnPapel = document.getElementById('papel');
@@ -116,6 +124,11 @@ function game() {
         computerChoice = getComputerChoice();
 
         playRound(playerButton, computerChoice);
+
+        if (scorePlayer == 5 || scoreComputer == 5) {
+            ganador.textContent = scorePlayer == 5 ? "GANASTE PIEDRA, PAPEL O TIJERA" : "PERDISTE PIEDRA, PAPEL O TIJERA";
+            botones.style.display = "none";
+        }
     });
 
     const btnTijera = document.getElementById('tijera');
@@ -124,6 +137,12 @@ function game() {
         computerChoice = getComputerChoice();
 
         playRound(playerButton, computerChoice);
+
+        if (scorePlayer == 5 || scoreComputer == 5) {
+            ganador.textContent = scorePlayer == 5 ? "GANASTE PIEDRA, PAPEL O TIJERA" : "PERDISTE PIEDRA, PAPEL O TIJERA";
+            botones.style.display = "none";
+        }
+        
     });
 
 /*
@@ -135,15 +154,7 @@ function game() {
         console.log("Ronda", round);
     }
 */
-/*
-    if (scorePlayer > scoreComputer) {
-        console.log("GANASTE PIEDRA, PAPEL O TIJERA");
-    } else if (scoreComputer > scorePlayer) {
-        console.log("PERDISTE PIEDRA, PAPEL O TIJERA");
-    } else if (scorePlayer == scoreComputer) {
-        console.log("EMPATE");
-    }
-*/
+
 }
 
 //INICIA EL JUEGO
